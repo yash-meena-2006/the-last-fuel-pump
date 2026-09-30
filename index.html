@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Last Fuel Pump</title>
+
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Creepster&family=Inter:wght@400;600;800&display=swap');
+
+    </style>
+</head>
+<body>
+<div class="noise"></div>
+<div id="flash"></div>
+
+    <nav>
+        <div class="logo">The Last Fuel pump</div>
+        <div><a href="#story">Story</a><a href="#signs">Signs</a><a href="#enter">Enter</a></div>
+    </nav>
+    <header class="hero" id="enter">
+        <div class="moon"></div>
+        <div class="house"><div class="window w1"></div><div class="window w2"></div></div>
+        <div class="hero-content">
+            <div class="kicker">EST. 1987 ~DO NOT GO FOR JOB</div>
+            <h1>THE LAST<br>FUEL PUMP</h1>
+            <p class="substitle">They say the fuel pump has been empty for 56 years. They also say the lights turn on every night. </p>
+            <button class="btn" onclick="enterHouse()">Enter if you are dare</button>
+        </div>
+    </header>
+    <section id="story">
+        <div class="title">The <span class="red">story</span></div>
+        <p class="lead">At the end of Blackwood Road stands a fuel pump nobody remembers pump. Every person who has entered tells a different story. Every person who has returned refuses to speak about the upstairs room</p>
+        <div class="cards">
+            <article class="card"><div class="num">Rule 1</div><h3>Ater 2:00AM</h3><p>If a car arrive at the pump with off headlight, process their payment, but never look inside the vehicle</p></article>
+            <article class="card"><div class="num">Rule 2</div><h3>The old Coin</h3><p>If a customer pays with an old coin, accept it without question. drop it into black box in the counter</p></article>
+            <article class="card"><div class="num">Rule 3</div><h3>Phone call</h3><p>If you receive a phone call asking "is vinod there?".answer it "yes". immediately go to the bathroom, lock yourself inside it for 2hr.</p></article>
+        </div>
+    </section>
+    <section class="story">
+        <div class="quote">"If someone whisper your name <br><span>don't answer it</span><br><span>don't look toward that whisper</span>"</div>
+    </section>
+<section id="Signs">
+    <div class="title">Three <span class="red">Signs</span></div>
+    <p class="lead">If you notice any of these near your home, leave immediately</p>
+    <article class="card"><div class="num">I</div><h3>Cold Breath</h3><p>your breath become visible even when the room is warm</p></article>
+    <article class="card"><div class="num">II</div><h3>Footsteps</h3><p>heavy footstep climb the stairs while everyone is downstairs</p></article>
+    <article class="card"><div class="num">III</div><h3>Cold Breath</h3><p>three knocks form the inside the wall. Never knock back</p></article>
+
+</section>
+<footer>THE LAST FUEL PUMP  ~SOME STORIES SHOULD STAY BURIED</footer>
+<div id="warning">
+    <div class="warning-box">
+        <h2>YOU HEARD IT</h2>
+        <p>that sound behind you? Don't turn around<br>whatever you do,don't turn around</p>
+        <button class="btn" onclick="closeWarning()">I won't</button>
+    </div>
+</div>
+
+<audio id="clickSound1" src="tanweraman-creak-and-crack-252628.mp3"></audio>
+<audio id="clickSound2" src="freesound_community-creepy-whispering-6690.mp3"></audio>
+<audio id="clickSound3" src="freesound_community-creepy-whispering-6690.mp3"></audio>
+<audio id="clickSound4" src="dragon-studio-scary-scream-401725.mp3"></audio>
+
+<script>
+function enterHouse(){
+  const flash=document.getElementById('flash');
+  flash.style.transition='opacity .08s';
+  flash.style.opacity='1';
+  setTimeout(()=>flash.style.opacity='0',120);
+  setTimeout(()=>document.getElementById('warning').classList.add('show'),500);
+}
+function closeWarning(){
+  document.getElementById('warning').classList.remove('show');
+  document.getElementById('story').scrollIntoView({behavior:'smooth'});
+}
+
+
+const sounds = [
+    document.getElementById("clickSound1"),
+    document.getElementById("clickSound2"),
+    document.getElementById("clickSound3"),
+    document.getElementById("clickSound4")
+];
+
+document.addEventListener("click", function () {
+    // Pick a random sound
+    const sound = sounds[Math.floor(Math.random() * sounds.length)];
+
+    // Reset it so it can play again
+    sound.currentTime = 0;
+
+    // Random volume
+    sound.volume = 0.25 + Math.random() * 0.4;
+
+    sound.play();
+});
+document.addEventListener("click", function () {
+
+    // 60% chance of making a sound
+    if (Math.random() > 0.6) return;
+
+    const sound = sounds[Math.floor(Math.random() * sounds.length)];
+
+    sound.currentTime = 0;
+    sound.volume = 0.2 + Math.random() * 0.5;
+    sound.play();
+});
+</script>
+</body>
+</html>
